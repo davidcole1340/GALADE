@@ -29,6 +29,13 @@ namespace DomainAbstractions
             get => _dropDown.Dispatcher.Invoke(() => _dropDown.Text);
             set
             {
+                _lastSentValue = value;
+                if (_lastSentValue != _dropDown.Text)
+                {
+                    _lastSentValue = value;
+                    if (selectedItem != null) selectedItem.Data = _lastSentValue;
+                }
+
                 _dropDown.Dispatcher.Invoke(() => _dropDown.Text = value);
             }
         }
@@ -115,7 +122,6 @@ namespace DomainAbstractions
                     if (selectedItem != null) selectedItem.Data = _lastSentValue;
                 }
             };
-
         }
 
         // IUI implementation
