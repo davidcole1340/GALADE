@@ -29,7 +29,6 @@ namespace DomainAbstractions
             get => _dropDown.Dispatcher.Invoke(() => _dropDown.Text);
             set
             {
-                _lastSentValue = value;
                 if (_lastSentValue != _dropDown.Text)
                 {
                     _lastSentValue = value;
